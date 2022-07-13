@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <mat-icon>contacts</mat-icon>
+  <span style="padding-left: 8px">BB contacts</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button
+          (click)="addContact()"
+          class="example-icon favorite-icon">
+    <mat-icon>add_circle</mat-icon>
+  </button>
+  <mat-form-field *ngIf="searchOn" appearance="fill">
+    <input #searchInput
+           matInput
+           [(ngModel)]="searchStr"
+           (keyup)="emitSearchKeys.emit($event.target)"
+           placeholder="search...">
+  </mat-form-field>
+  <button mat-icon-button class="example-icon"
+          (click)="toggleSearch()">
+    <mat-icon>{{ searchStr ? 'zoom_in' : 'search' }}</mat-icon>
+  </button>
+</mat-toolbar>

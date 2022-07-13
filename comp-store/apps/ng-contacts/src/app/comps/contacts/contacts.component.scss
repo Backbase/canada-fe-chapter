@@ -1,0 +1,25 @@
+.contacts-table {
+  width: 100%;
+}
+
+th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+  padding-left: 1rem;
+}
+
+.mat-column-name {
+  border-right: 1px solid currentColor;
+}
+
+.mat-column-phone {
+  padding-left: 16px;
+  font-size: 16px;
+}
+
+.edit-cols {
+  opacity: .4;
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
