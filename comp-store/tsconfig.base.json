@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@comp-store/comp-store": ["libs/comp-store/src/index.ts"],
       "@comp-store/data-api": ["libs/data-api/src/index.ts"],
       "@comp-store/data-model": ["libs/data-model/src/index.ts"],
       "@comp-store/material": ["libs/material/src/index.ts"]

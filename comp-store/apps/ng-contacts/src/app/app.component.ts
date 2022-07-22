@@ -2,22 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { Contact } from "@comp-store/data-model";
 import { map, Observable, take } from "rxjs";
 import { ContactsService } from "@comp-store/data-api";
+import { ContactsStore } from "@comp-store/comp-store";
 
 @Component({
   selector: 'comp-store-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [ContactsStore]
 })
 export class AppComponent implements OnInit {
   contacts$!: Observable<Contact[]>;
   contactsFiltered$: any;
   searchStr = '';
 
-  constructor(private service: ContactsService) {
+  constructor(private service: ContactsService,
+              private store: ContactsStore) {
   }
 
   ngOnInit() {
     this.prepViewData();
+    this.store.init();
   }
 
   prepViewData() {
@@ -37,17 +41,17 @@ export class AppComponent implements OnInit {
         ));
   }
 
-  onAdd(contact: Contact) {
-    this.doRestOp(this.service.create(contact));
-  }
+  // onAdd(contact: Contact) {
+  //   this.doRestOp(this.service.create(contact));
+  // }
 
   onUpdate(contact: Contact) {
     this.doRestOp(this.service.update(contact));
   }
 
-  onDelete(contact: Contact) {
-    this.doRestOp(this.service.delete(contact));
-  }
+  // onDelete(contact: Contact) {
+  //   this.doRestOp(this.service.delete(contact));
+  // }
 
   doRestOp(obs: Observable<any>) {
     obs.pipe(

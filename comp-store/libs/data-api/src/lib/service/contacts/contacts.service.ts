@@ -17,15 +17,15 @@ export class ContactsService {
     return this.http.get<Contact[]>(URL);
   }
 
-  create(contact: Contact): Observable<Contact[]> {
-    return this.http.post<Contact[]>(URL, contact);
+  create(contact: Contact): Observable<Contact> {
+    return this.http.post<Contact>(URL, contact);
   }
 
   update(contact: Contact) {
     return this.http.put(URL + `/${contact.id}`, contact);
   }
 
-  delete(contact: Contact) {
-    return this.http.delete(URL + `/${contact.id}`);
+  delete(contact: Contact): Observable<Contact[]> {
+    return this.http.delete<Contact[]>(URL + `/${contact.id}`);
   }
 }

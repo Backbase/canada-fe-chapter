@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "api": "apps/api",
+    "comp-store": "libs/comp-store",
     "data-api": "libs/data-api",
     "data-model": "libs/data-model",
     "material": "libs/material",
