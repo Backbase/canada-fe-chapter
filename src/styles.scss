@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 2rem; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-form-field-wrapper {
+  padding: 3px 0;
+  width: 50%;
+}
+
+input.mat-input-element {
+  padding: 0 0 7px 10px;
+}
+
+.emoji {
+  font-size: 90px;
+  display: inline-block;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+
+

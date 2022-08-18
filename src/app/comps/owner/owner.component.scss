@@ -1,0 +1,18 @@
+.parent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px dashed gray;
+  min-width: fit-content;
+  padding: 1.5rem 0;
+}
+
+.child {
+  margin: 10px;
+  width: max-content;
+}
+
+.money {
+  font-size: 40px;
+  margin-left: 3rem;
+  color: green;
+}

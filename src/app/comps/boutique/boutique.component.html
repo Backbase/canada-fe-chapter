@@ -1,0 +1,36 @@
+<span class="emoji">🏪</span>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="sold">
+    <th mat-header-cell *matHeaderCellDef> Sold</th>
+    <td mat-cell *matCellDef="let product"> {{product.sold}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name</th>
+    <td mat-cell *matCellDef="let product"> {{product.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="cost">
+    <th mat-header-cell *matHeaderCellDef> Cost</th>
+    <td mat-cell *matCellDef="let product"> {{product.cost | currency}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef style="width: 50px"> quantity</th>
+    <td mat-cell *matCellDef="let product;">
+      <mat-form-field appearance="outline" floatLabel="never">
+        <input matInput #quantity
+               (blur)="addOrder(quantity.value, product)">
+      </mat-form-field>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"
+      class="example-first-footer-row">
+  </tr>
+
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

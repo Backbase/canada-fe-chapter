@@ -1,0 +1,20 @@
+<div class="parent">
+  <div class="child">
+    <span class="emoji">😓🧮💵</span>
+    <span class="money">{{ earnings | currency }}</span>
+  </div>
+</div>
+
+<div class="parent">
+  <div class="child">
+    <app-boutique [products]="products"
+                  (emitOrders)="collectOrder($event)">
+    </app-boutique>
+  </div>
+
+  <div class="child">
+    <app-buyer (emitPayment)="receivePayment($event)"
+               [orders]="orders">
+    </app-buyer>
+  </div>
+</div>
