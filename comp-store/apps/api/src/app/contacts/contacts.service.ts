@@ -24,7 +24,7 @@ export class ContactsService {
   update(id: string, contact: Contact) {
     const idx = this.contacts.findIndex(contact => contact.id === id);
     this.contacts[idx] = contact;
-    return this.contacts;
+    return this.contacts[idx];
   }
 
   remove(id: string) {

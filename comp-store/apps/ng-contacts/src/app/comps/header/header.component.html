@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <mat-icon>contacts</mat-icon>
+  <mat-icon style="cursor: pointer" (click)="reload()">contacts</mat-icon>
   <span style="padding-left: 8px">BB contacts</span>
   <span class="example-spacer"></span>
   <button mat-icon-button
@@ -10,12 +10,12 @@
   <mat-form-field *ngIf="searchOn" appearance="fill">
     <input #searchInput
            matInput
-           [(ngModel)]="searchStr"
-           (keyup)="emitSearchKeys.emit($event.target)"
+           [value]="searchStr$ | async"
+           (keyup)="setSearchStr($any($event.target).value)"
            placeholder="search...">
   </mat-form-field>
   <button mat-icon-button class="example-icon"
           (click)="toggleSearch()">
-    <mat-icon>{{ searchStr ? 'zoom_in' : 'search' }}</mat-icon>
+    <mat-icon>{{ (searchStr$ | async) ? 'zoom_in' : 'search' }}</mat-icon>
   </button>
 </mat-toolbar>

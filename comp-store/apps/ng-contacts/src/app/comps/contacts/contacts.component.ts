@@ -1,15 +1,11 @@
-import {
-  Component, EventEmitter,
-  Input,
-  OnChanges,
-  OnInit, Output,
-  SimpleChanges
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { Contact } from "@comp-store/data-model";
-import { filter, Observable, take } from "rxjs";
+import { filter, take } from "rxjs";
 import { openEditContactDialog } from "../edit-contact/edit-contact.component";
 import { MatDialog } from "@angular/material/dialog";
 import { ContactsStore } from "@comp-store/comp-store";
+
+// no longer need ngOnInit/onChanges
 
 @Component({
   selector: 'comp-store-contacts',
@@ -17,22 +13,10 @@ import { ContactsStore } from "@comp-store/comp-store";
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent {
-  // @Input() contacts$!:Observable<Contact[]> | null;
-  @Output() emitUpdate = new EventEmitter<Contact>();
-  // @Output() emitDelete = new EventEmitter<Contact>();
-
-  dataSource = this.store.contacts$;
+  dataSource = this.store.contactsFiltered$;
   displayedColumns = ['name', 'phone', 'email', 'edit', 'delete'];
 
   constructor(private dialog: MatDialog, private store: ContactsStore) {}
-
-  // ngOnInit(): void {
-  //   // this.dataSource = this.contacts$;
-  // }
-  //
-  // ngOnChanges(changes: SimpleChanges) {
-  //   // this.dataSource = this.contacts$;
-  // }
 
   updateContact(contact:Contact) {
     openEditContactDialog(this.dialog, contact)
@@ -40,7 +24,7 @@ export class ContactsComponent {
         take(1),
         filter(val => !!val)
       )
-      .subscribe(contact => this.emitUpdate.emit(contact))
+      .subscribe(contact => this.store.updateContact(contact))
   }
 
   deleteContact(contact:Contact) {

@@ -42,5 +42,11 @@ export const CONTACTS: Contact[] = [
     name: 'Kern Thekid',
     phone: '555-123-3454',
     email: 'kern@bb.com'
+  },
+  {
+    id: '80',
+    name: 'Grzegorz Ninepm',
+    phone: '333-444-7777',
+    email: 'gr@bb.com'
   }
 ];
